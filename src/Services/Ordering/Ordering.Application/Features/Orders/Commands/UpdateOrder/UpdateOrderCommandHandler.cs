@@ -31,7 +31,7 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
             var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
             if (orderToUpdate == null)
             {
-                //throw new NotFoundException(nameof(Order), request.Id);
+                throw new NotFoundException(nameof(Order), request.Id);
             }
 
             _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommand), typeof(Order));
